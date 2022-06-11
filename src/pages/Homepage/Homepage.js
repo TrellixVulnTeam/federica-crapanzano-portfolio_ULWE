@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import PlayerRenponsive from "../../utils/PlayerResponsive/PlayerResponsive";
-import { Youtube, Info, Heart } from "react-feather";
+import { Youtube, Info, Heart, Instagram, Facebook } from "react-feather";
 import "./Homepage.scss";
 
 const Homepage = () => {
+  const [toSend, setToSend] = useState({
+    from_name: "",
+    to_name: "",
+    message: "",
+    reply_to: "",
+  });
+
+  const onSubmit = (e) => {
+    // e.preventDefault();
+    // send("SERVICE ID", "TEMPLATE ID", toSend, "User ID")
+    //   .then((response) => {
+    //     console.log("SUCCESS!", response.status, response.text);
+    //   })
+    //   .catch((err) => {
+    //     console.log("FAILED...", err);
+    //   });
+  };
+
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+  };
+
   return (
     <section className="homepage">
       <div className="container">
@@ -76,14 +98,15 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="container-lg">
+      {/* About me */}
+      <div className="container container-lg">
         <div className="row">
           <div className="col-12">
             <h2 className="main-title text-left">About me</h2>
           </div>
         </div>
         <div className="row">
-          <div className="col-4">
+          <div className="col-12 col-md-4">
             <img
               src="https://randomuser.me/api/portraits/women/20.jpg"
               alt="..."
@@ -115,7 +138,7 @@ const Homepage = () => {
               </div>
             </div>
           </div>
-          <div className="col-8">
+          <div className="col-md-8 col-12">
             <h3 className="section-title">Hello!</h3>
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -142,6 +165,97 @@ const Homepage = () => {
               esse quam nihil molestiae consequatur, vel illum qui dolorem eum
               fugiat quo voluptas nulla pariatur?
             </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container container-lg contact-me">
+        <div className="row">
+          <div className="col-12">
+            <h2 className="main-title">Contact me</h2>
+          </div>
+          {/* TODO -  set the service EMailJS */}
+          <div className="col-12 col-md-8 order-md-1 order-2">
+            <form onSubmit={onSubmit}>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="emailInput"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+                <small id="emailHelp" class="form-text text-muted">
+                  We'll never share your email with anyone else.
+                </small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Your name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nameInput"
+                  aria-describedby="name input"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">
+                  Example textarea
+                </label>
+                <textarea
+                  class="form-control"
+                  id="messageInput"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div className="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+          <div className="col-12 col-md-4 order-md-1 order-2">
+            <div className="contact-me__text-container">
+              <p>Do you want to know more?</p>
+              <p>Follow me on the Social Networks!</p>
+
+              <div className="pb-2">
+                <a href="#facebook">
+                  <Facebook></Facebook>
+                </a>
+                <a href="#instagram">
+                  <Instagram></Instagram>
+                </a>
+              </div>
+              <p>You will find my WIPs, sketches, tests and the latest news</p>
+              <p>example@gmail.com Milan, Italy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer mt-5 px-3 py-5">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12">
+              <div className="d-flex justify-content-center align-items-center">
+                <p className="m-0 flex-grow-1 text-center">
+                  @Federica Crapanzano minore di tre
+                </p>
+                <div className="">
+                  <a href="#facebook">
+                    <Facebook></Facebook>
+                  </a>
+                  <a href="#instagram">
+                    <Instagram></Instagram>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
